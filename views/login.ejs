@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row justify-content-center">
+
+      <div class="col-md-6  mt-5 ">
+        <img src="https://cdn-icons-png.flaticon.com/512/295/295128.png" alt="login image" height="400px">
+      </div>
+
+
+      <div class="col-md-6">
+        <h2 class="text-center mt-5">Login Form</h2>
+
+        <% if (message.length> 0){ %>
+          <div class="alert alert-success">
+            <%= message %>
+          </div>
+          <% } %>
+
+
+        <% if (msg.length> 0){ %>
+            <div class="alert alert-danger">
+              <%= msg %>
+            </div>
+            <% } %>
+
+
+            <form action ="/verifyLogin" method="post" class="mt-4">
+              <!-- Email -->
+              <div class="form-group">
+                <label for="email">Email address</label>
+                <input name="email"   type="email" class="form-control" id="email" placeholder="Enter email" required>
+              </div>
+
+              <!-- Password -->
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input  name="password"   type="password" class="form-control" id="password" placeholder="Password" required>
+              </div>
+
+              <!-- Submit Button -->
+
+              <center> <button type="submit" class="btn btn-primary btn-block">Login</button></center>
+
+              <br><br>
+              <center>
+                <p class="text-uppercase fw-light">
+                  Don't have an account? &nbsp;<a href="/register"
+                    >Register Now</a
+                  >
+                </p>
+              </center>
+
+            </form>
+
+            <div id="message" class="mt-3"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS, Popper.js, and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <script>
+        function validateForm() {
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+
+            // Check if password and confirm password match
+            if (password !== confirmPassword) {
+                alert("Password and Confirm Password do not match.");
+                return false; // Prevent form submission
+            }
+
+            // If everything is okay, allow form submission
+            alert("Form submitted successfully!");
+            return true; 
+        }
+
+        // Store name and email even if password mismatch occurs
+        function storeDataOnMismatch() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+
+            if (!name || !email) {
+                alert('Name and Email fields are required');
+                return;
+            }
+
+            // Store the name and email in localStorage or cookies
+            localStorage.setItem('name', name);
+            localStorage.setItem('email', email);
+            alert("Name and Email saved locally.");
+        }
+    </script>
+</head>
+<body>
+<center>
+    <h2>Registration Form</h2>
+
+    <h3>Registration Form</h3>
+    <% if (message.length> 0){ %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+      <% } %>
+
+
+      
+    <form  action="/insertStudent" method="post"  onsubmit="return validateForm()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <button onclick="storeDataOnMismatch()">Save Name and Email (in case of mismatch)</button></center>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+  <script>
+    function validateForm() {
+        var password = document.getElementById('password').value;
+        var confirmPassword = document.getElementById('confirmPassword').value;
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+
+        // Check if password and confirm password match
+        if (password !== confirmPassword) {
+            alert("Password and Confirm Password do not match.");
+            return false; // Prevent form submission
+        }
+        // If everything is okay, allow form submission
+        alert("Form submitted successfully!");
+        return true; 
+    }
+  // Store name and email even if password mismatch occurs
+  function storeDataOnMismatch() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+
+            if (!name || !email) {
+                alert('Name and Email fields are required');
+                return;
+            }
+
+            // Store the name and email in localStorage or cookies
+            localStorage.setItem('name', name);
+            localStorage.setItem('email', email);
+            alert("Name and Email saved locally.");
+        }
+   
+     </script>
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header text-center">
+
+            <h3>Registration Form</h3>
+            <% if (message.length> 0){ %>
+              <div class="alert alert-danger">
+                <%= message %>
+              </div>
+              <% } %>
+
+          </div>
+          <div class="card-body">
+            <form action="/insertStudent" method="post"  onsubmit="return validateForm()" >
+              <!-- Full Name -->
+              <div class="mb-3">
+
+                <label for="Name" class="form-label">Full Name</label>
+                <input name="name"  type="text" class="form-control" id="name" placeholder="Enter your full name"
+                  required>
+              </div>
+
+              <!-- Email -->
+              <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input name="email" type="email" class="form-control" id="email" placeholder="Enter your email"
+                  required>
+              </div>
+              <!-- Password -->
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input name="password" type="password" class="form-control" id="password"
+                  placeholder="Enter your password" required>
+              </div>
+              <!-- Confirm Password -->
+              <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input name="confirmPassword" type="password" class="form-control" id="confirmPassword"
+                  placeholder="Confirm your password" required>
+              </div>
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-primary w-100">Register</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Bootstrap JS (Optional for features like validation) -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>
